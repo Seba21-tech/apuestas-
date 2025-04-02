@@ -1,0 +1,53 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+
+const footballData = [
+  { name: "Equipo A", goles: 10, corners: 4, tarjetas: 2 },
+  { name: "Equipo B", goles: 7, corners: 5, tarjetas: 3 },
+  { name: "Equipo C", goles: 12, corners: 6, tarjetas: 1 },
+];
+
+const basketballData = [
+  { name: "Equipo X", puntos: 89, rebotes: 10, asistencias: 8 },
+  { name: "Equipo Y", puntos: 95, rebotes: 12, asistencias: 7 },
+  { name: "Equipo Z", puntos: 102, rebotes: 14, asistencias: 6 },
+];
+
+export default function Dashboard() {
+  return (
+    <div className="p-6 grid gap-6 grid-cols-1 md:grid-cols-2">
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-bold mb-4">Estadísticas de Fútbol</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={footballData}>
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="goles" fill="#82ca9d" name="Goles" />
+              <Bar dataKey="corners" fill="#8884d8" name="Córners" />
+              <Bar dataKey="tarjetas" fill="#ff4444" name="Tarjetas" />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+      
+      <Card>
+        <CardContent>
+          <h2 className="text-xl font-bold mb-4">Estadísticas de Baloncesto</h2>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={basketballData}>
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="puntos" fill="#ffbb33" name="Puntos" />
+              <Bar dataKey="rebotes" fill="#00c851" name="Rebotes" />
+              <Bar dataKey="asistencias" fill="#007e33" name="Asistencias" />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
